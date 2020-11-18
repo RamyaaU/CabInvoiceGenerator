@@ -63,6 +63,7 @@ namespace CabInvoiceGenerator
         public double CalculateFare(double distance, int time)
         {
             double totalFare = 0;
+            // Exception handling for invalid  distance and time
             try
             {
                 //calculating total fare
@@ -72,19 +73,22 @@ namespace CabInvoiceGenerator
             {
                 if (rideType.Equals(null))
                 {
+                    //invalid ride type exception
                     throw new CabInVoiceException(CabInVoiceException.ExceptionType.INVALID_RIDE_TYPE, "Invalid ride type");
                 }
                 if (distance <= 0)
                 {
+                    //invalid distance exception
                     throw new CabInVoiceException(CabInVoiceException.ExceptionType.INVALID_DISTANCE, "Invalid distance");
                 }
                 if (time < 0)
                 {
+                    //invalid time exception
                     throw new CabInVoiceException(CabInVoiceException.ExceptionType.INVALID_TIME, "Invalid time");
                 }
             }
             //Mathmax is inbuilt function 
-            //using mayhmax calculation of totalfare and minimum fare will be done 
+            //using mathmax returns maximum value
             return Math.Max(totalFare, MINIMUM_FARE);
         }
 
@@ -97,11 +101,13 @@ namespace CabInvoiceGenerator
         public InVoiceSummary CalculateFare(Ride[] rides)
         {
             double totalFare = 0;
+            // Exception handling for the invalid  distance and time
             try
             {
-                //Calculating Total Fare For All Rides.
+                //calculating Total Fare For All Rides using foreach loop
                 foreach (Ride ride in rides)
                 {
+                    //returns totalfare
                     totalFare += this.CalculateFare(ride.distance, ride.time);
                 }
             }
@@ -112,6 +118,7 @@ namespace CabInvoiceGenerator
                     throw new CabInVoiceException(CabInVoiceException.ExceptionType.NULL_RIDES, "Rides Are Null");
                 }
             }
+            //returning invoice summary which has total fare and number of rides
             return new InVoiceSummary(rides.Length, totalFare);
         }
 

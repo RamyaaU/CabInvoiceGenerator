@@ -18,7 +18,7 @@ namespace CabInvoiceGenerator
         }
 
         /// <summary>
-        /// Adds the ride.
+        /// Function to add ride list to specified userid.
         /// </summary>
         /// <param name="userId">The user identifier.</param>
         /// <param name="rides">The rides.</param>
@@ -38,6 +38,24 @@ namespace CabInvoiceGenerator
             catch(CabInVoiceException)
             {
                 throw new CabInVoiceException(CabInVoiceException.ExceptionType.NULL_RIDES, "Rides are null");
+            }
+        }
+
+        /// <summary>
+        /// Function To Get Rides List As an Array for specified UserId. 
+        /// </summary>
+        /// <param name="userId">The user identifier.</param>
+        /// <returns></returns>
+        /// <exception cref="CabInVoiceException">Invalid UserID</exception>
+        public Ride[] GetRides(string userId)
+        {
+            try
+            {
+                return this.userRides[userId].ToArray();
+            }
+            catch (Exception)
+            {
+                throw new CabInVoiceException(CabInVoiceException.ExceptionType.INVALID_USER_ID, "Invalid UserID");
             }
         }
     }

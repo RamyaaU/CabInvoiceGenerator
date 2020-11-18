@@ -5,7 +5,7 @@ namespace CabInVoiceTest
 {
     public class Tests
     {
-        //initialising instance for invoice genear
+        //initialising instance for invoice generator
         InVoiceGenerator invoiceGenerator; 
 
         [SetUp]

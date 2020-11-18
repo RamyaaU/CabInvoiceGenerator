@@ -7,21 +7,34 @@ namespace CabInvoiceGenerator
     public class InVoiceSummary
     {
         //variables
-        private int numberOfRides;
+        public int numberOfRides;
         public double totalFare;
-        private double averageFare;
+        public double averageFare;
+        public int length;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="InVoiceSummary"/> class.
         /// </summary>
         /// <param name="numberofRides">The numberof rides.</param>
         /// <param name="totalFare">The total fare.</param>
-        public InVoiceSummary(int numberOfRides, double totalFare)
-        {
-            this.numberOfRides = numberOfRides;
+        public InVoiceSummary(double totalFare, int length)
+        { 
             this.totalFare = totalFare;
-            //formula for average fare
-            this.averageFare = this.totalFare / numberOfRides;
+            this.length = length;
+        }
+
+        /// <summary>
+        /// Values the tuple.
+        /// </summary>
+        /// <typeparam name="Double">The type of the ouble.</typeparam>
+        /// <typeparam name="Int32">The type of the NT32.</typeparam>
+        /// <typeparam name="Double">The type of the ouble.</typeparam>
+        /// <returns></returns>
+        public InVoiceSummary(double totalFare, int length, double averageFare)
+        {
+            this.totalFare = totalFare;
+            this.length = length;
+            this.averageFare = averageFare;
         }
 
         /// <summary>

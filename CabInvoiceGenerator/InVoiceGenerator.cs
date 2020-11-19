@@ -7,15 +7,19 @@ namespace CabInvoiceGenerator
     public class InVoiceGenerator
     {
         //variable
-        RideType rideType;
+        public RideType rideType;
         private RideRepository rideRepository;
 
         //constants
         private readonly double MINIMUM_COST_PER_KM;
-        private readonly int COST_PER_KM;
         private readonly int COST_PER_TIME;
         private readonly double MINIMUM_FARE;
+        private readonly int COST_PER_KM;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="InVoiceGenerator"/> class.
+        /// </summary>
+        /// <param name="rideType">Type of the ride.</param>
         public InVoiceGenerator(RideType rideType)
         {
             this.rideType = rideType;
@@ -24,38 +28,7 @@ namespace CabInvoiceGenerator
             this.MINIMUM_FARE = 5;
             this.rideRepository = new RideRepository();
         }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="InVoiceGenerator"/> class.
-        /// </summary>
-        /// <param name="rideType">Type of the ride.</param>
-        /// <exception cref="CabInvoiceGenerator.CabInVoiceException">Invalid ride type</exception>
-        public InVoiceGenerator(RideType rideType)
-        {
-            this.rideType = rideType;
-            this.rideRepository = new RideRepository();
-            try
-            {
-                //if ride type is premium then rate will be set for premium
-                if (rideType.Equals(RideType.PREMIUM))
-                {
-                    this.MINIMUM_COST_PER_KM = 15;
-                    this.COST_PER_TIME = 2;
-                    this.MINIMUM_FARE = 20;
-                }
-                //else rate will be set for normal
-                else if (rideType.Equals(RideType.NORMAL))
-                {
-                    this.MINIMUM_COST_PER_KM = 10;
-                    this.COST_PER_TIME = 1;
-                    this.MINIMUM_FARE = 5;
-                }
-            }
-            catch (CabInVoiceException)
-            {
-                throw new CabInVoiceException(CabInVoiceException.ExceptionType.INVALID_RIDE_TYPE, "Invalid ride type");
-            }
-        }
-
+        
         /// <summary>
         /// Calculates the fare.
         /// </summary>

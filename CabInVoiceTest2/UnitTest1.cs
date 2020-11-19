@@ -19,6 +19,7 @@ namespace CabInVoiceTest2
             Assert.Pass();
         }
 
+        /// TC 3
         /// <summary>
         /// Given the multiple rides should return invoice summary for average fare for normal ridetype
         /// </summary>

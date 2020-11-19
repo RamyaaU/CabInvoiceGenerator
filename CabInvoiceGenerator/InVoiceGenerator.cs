@@ -162,6 +162,12 @@ namespace CabInvoiceGenerator
             }
         }
 
+        /// <summary>
+        /// Calculates the average fare.
+        /// </summary>
+        /// <param name="rides">The rides.</param>
+        /// <returns></returns>
+        /// <exception cref="CabInVoiceException">Rides passed are null..</exception>
         public InVoiceSummary CalculateAvgFare(Ride[] rides)
         {
             double totalFare = 0;

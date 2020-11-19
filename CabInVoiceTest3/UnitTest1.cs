@@ -20,6 +20,10 @@ namespace CabInVoiceTest3
             Assert.Pass();
         }
 
+        /// TC 4
+        /// <summary>
+        /// Given the user identifier should return invoice summary.
+        /// </summary>
         public void GivenUserId_ShouldReturnInvoiceSummary()
         {
             //ARRANGE
